@@ -51,11 +51,11 @@ These selectors can be combined to match quite complex layer names however it is
 | `^ Default`           | Default                                | Will only select a root level layer called "Default"         |
 | `* > Default`         | Layer::Default, Layer::Layer::Default  | Will only match a layer called "Default" that is the child of another layer. |
 | `Default-%N`          | Default-1, Default-2, Layer::Default-3 | Matches any layer of the pattern "Default" followed by a dash and a number. |
-| `(D|d)efault`         | default, Default                       | Select both capitalised and non capitalised default layers.  |
+| `(D\|d)efault`         | default, Default                       | Select both capitalised and non capitalised default layers.  |
 | `Def*`                | Default, Def, Defined                  | Select any layer starting with "Def".                        |
 | `^ Default ~ *`       | Defualt::Child::AnotherChild           | Select every layer inside of the root default layer.         |
-| `^ Default | Layer`   | Defualt, Layer                         | Select "Default" and "Layer" root layers.                    |
-| `(^ Default) | Layer` | Default, Layer, Test::Layer            | Select the root level "Default" and any other layer called Layer. |
+| `^ Default \| Layer`   | Defualt, Layer                         | Select "Default" and "Layer" root layers.                    |
+| `(^ Default) \| Layer` | Default, Layer, Test::Layer            | Select the root level "Default" and any other layer called Layer. |
 
 #### Properties
 
