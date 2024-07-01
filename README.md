@@ -32,7 +32,7 @@ Patterns are parts of selectors which match to layer name parts rather than just
 | -------------- | ---------------------- | ------------------------------------------------------------ |
 | String         | `Layer:`               | Matches any layer with name "Layer".                         |
 | Wild Card      | `*:`                   | Match any Layer.                                             |                        |
-| Or             | `Pattern1 | Pattern2:` | Match either pattern.                                        |
+| Or             | `Pattern1 \| Pattern2:` | Match either pattern.                                        |
 | Number Capture | `%Name:`               | Match any number.  Number value may be accessed in property descriptions later. |
 | Grouping       | `(Pattern):`           | Group parts of the pattern to build more complex patterns.   |
 | Child Layers        | `Layer1 ~ Layer2:` | Select if Layer2 is somewhere inside of Layer1 .             |
