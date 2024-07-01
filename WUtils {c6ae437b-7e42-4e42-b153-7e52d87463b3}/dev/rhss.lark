@@ -1,0 +1,37 @@
+?start: stylesheet
+
+
+stylesheet:(_NL|definition)*
+definition: selector [_NL] [_INDENT property_list _DEDENT]
+
+selector: rooted ":"
+rooted: root? inside
+inside: child ("~" child)*
+child: option (">" option)*
+option:  layer_match ("|"layer_match)*
+layer_match: ((anything | number_capture | name_match | "(" rooted ")")+)
+number_capture: "%"NAME
+anything: "*"
+root: "^"
+
+
+property_list: (property)+
+property: name_match ":" /[^\r\n]+/ _NL?
+
+name_match: /[\w\-_]+/
+
+COMMENT: /\#[^\r\n]*/
+
+%ignore COMMENT
+%ignore WS_INLINE
+
+%import common.CNAME -> NAME
+%import common.ESCAPED_STRING
+%import common.SIGNED_NUMBER
+%import common.LETTER -> LETTER
+%import common.DIGIT -> DIGIT
+%import common.WS_INLINE
+
+%declare _INDENT _DEDENT
+
+_NL: /(\r?\n[\t ]*)+/

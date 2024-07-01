@@ -1,0 +1,165 @@
+# Default Values
+*:
+    Type:   Self
+    Ink:    Self
+    Weight: Self
+    Color:  Self
+    Layer:  Self
+
+Default:
+    Color: Red
+    Weight: Default
+    Ink: Black
+
+# Layers for Drawing etc
+
+Thick | Cut | Thin | Fine | Hair | Hidden | Above:
+    Ink: Parent
+
+Thick | Cut | Glass:
+    Weight: 0.5
+
+Thick | Fill:
+    Color: lerp(Parent, Background.inv(), 0.6)
+    Ink: Black
+
+Cut:
+    Color: lerp(Parent, Background.inv(), 0.7)
+    Ink: Black
+
+Glass | Shading:
+    Color: Parent.rot(100).lit(0.8)
+    Ink: lerp(Parent, Paper, 0.8)
+
+Thin:
+    Weight:0.3
+    Color: Parent
+
+Fine | Hidden | Above | CentreLine | Construction:
+    Weight:0.2
+    Color: lerp(Parent, Background, 0.3)
+
+Above:
+    Pen: 0.3,-0.5
+    Color: Parent.rot(60).lit(0.5)
+
+Hidden:
+    Pen: 1,-1
+    Color: Parent.rot(40).lit(0.5)
+
+Wipeout:
+    Weight: Hairline
+    Color: Background
+    Ink: Paper
+
+Hair | Hatch | (Hatch-*):
+    Weight:0.1
+    Color: lerp(Parent, Background, 0.6)
+    
+Construction:
+    Color: lerp(Parent, Background, 0.7)
+    Ink: lerp(Parent, Paper, 0.5)
+    Pen: 0.3, -0.3
+
+
+# Guides, Layouts Etc
+
+Guide:
+    Weight: NoPrint
+    Color: Cyan
+    Ink: Cyan
+
+Frame | (Frame ~ *) | *-Frame:
+    Weight: Hairline
+    Color: Turquoise
+    Ink: White
+
+(Guide~*) | (*-Guide):
+    Weight: NoPrint
+    Color: hsv(185, H1, 0.7)
+    Ink: hsv(185, H1, 0.7)
+    Pen: H1,-1
+
+# Addtional Annotation Layers
+
+CenterLine:
+    Pen: 0,-1,2,-1
+    Ink: Parent
+    Color: Parent.rot(250)
+
+Text:
+    Color: Parent
+    Ink: Parent
+    Weight:0.2
+
+Dimensions:
+    Color: Parent
+    Ink: Parent
+    Weight:0.2
+
+# Main Layer Types
+
+Background:
+    Color: DarkGreen
+    Ink: DarkGray
+
+Drawing | (Drawing-*):
+    Color: Red
+    Ink: Black
+
+Furniture:
+    Color: Orange
+    Ink: Black
+
+Annotation:
+    Color: Purple
+    Ink: Black
+
+Layout:
+    Color: Turquoise
+    Ink: Black
+
+3d:
+    Color: Blue
+
+#3d~*:
+#    Weight: 0.2
+#    Color: Self
+#    Ink: Self
+#   Color: hsv(H1*360, (H1*3)%0.5+0.5, 1)
+#   Ink: hsv(H1*360, (H1*3)%0.5+0.5, 1)
+
+# Layers regarding manufacture
+
+Manufacture:
+    Weight: NoPrint
+    Color: Blue
+    Ink: Blue
+
+Manufacture~*:
+    Weight: Hairline
+    Color: hsv(H1*360, (H1*3)%0.5+0.5, 1, 1)
+    Ink: hsv(H1*360, (H1*3)%0.5+0.5, 1, 1)
+
+Manufacture~Cut:
+    Color: Red
+    Ink: Red
+
+Manufacture~Engrave:
+    Color: Green
+    Ink: Green
+
+Manufacture~Guide:
+    Color: Cyan
+    Ink: Cyan
+
+# Map Layers
+Buildings > Fill:
+    Ink: LightGray
+
+Buildings > Areas:
+    Weight: NoPrint
+
+# Armature Lines 
+Armature > *:
+    Color: hsv(H1*360, (H1*3)%0.5+0.5, 1, 1)
